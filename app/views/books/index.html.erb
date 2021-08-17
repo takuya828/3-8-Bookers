@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  
+<body>
+  <h1>Books</h1>
+
+  
+  <table>
+    <% @books.each do |book| %>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td>リーダブルコード</td>
+        <td><%= book.title %></td>
+        <td><a class="show_14660" href="/books">Show</a>
+        </td>
+        <td>
+        <a class="edit_14660" href="books"></a>
+        </td>
+        <td><a data-confirm="Are you sure?" class="destroy_14660" rel="nofollow" data-method="delete" href="/books">Destroy</a>
+        </td>
+        </tr>
+    </tbody>
+<% end %>
+  </table>
+  
+  <h2>New book</h2>
+  
+<!-- form_with部分 -->
+<%= form_with model: @book, url:'/books', local:true do |f| %>
+
+  <h4>title</h4>
+  <%= f.text_field :title %>
+
+  <h4>body</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+
+<% end %>
+  
+</body>
+
+</html>
